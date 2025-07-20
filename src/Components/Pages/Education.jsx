@@ -126,7 +126,7 @@ const Education = () => {
                 className="text-blue-600 dark:text-purple-400 mb-6 font-medium"
                 whileHover={{ x: 3 }}
               >
-                B.Tech, Information Technology • Aug 2021 - Aug 2025
+                B.Tech, Computer Science & Engineering • Aug 2021 - Aug 2025
               </motion.p>
 
               {/* Coursework Section */}
