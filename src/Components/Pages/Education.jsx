@@ -98,8 +98,7 @@ const Education = () => {
             </motion.h2>
             <div className="h-1 w-20 bg-blue-500 dark:bg-purple-500 mb-8"></div>
             <p className="text-lg text-gray-600 dark:text-gray-300">
-              My academic journey and specialized coursework in Information
-              Technology.
+              My academic journey and specialized coursework in Computer Science & Engineering.
             </p>
           </motion.div>
 
