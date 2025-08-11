@@ -98,8 +98,7 @@ const Education = () => {
             </motion.h2>
             <div className="h-1 w-20 bg-blue-500 dark:bg-purple-500 mb-8"></div>
             <p className="text-lg text-gray-600 dark:text-gray-300">
-              My academic journey and specialized coursework in Information
-              Technology.
+              My academic journey and specialized coursework in Computer Science & Engineering.
             </p>
           </motion.div>
 
@@ -127,7 +126,7 @@ const Education = () => {
                 className="text-blue-600 dark:text-purple-400 mb-6 font-medium"
                 whileHover={{ x: 3 }}
               >
-                B.Tech, Information Technology • Aug 2021 - Aug 2025
+                B.Tech, Computer Science & Engineering • Aug 2021 - Aug 2025
               </motion.p>
 
               {/* Coursework Section */}
