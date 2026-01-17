@@ -39,7 +39,7 @@ const CustomCursor = () => {
         <>
             {/* Main Cursor (Crosshair) */}
             <motion.div
-                className="fixed top-0 left-0 w-8 h-8 pointer-events-none z-[9999] mix-blend-difference"
+                className="fixed top-0 left-0 w-8 h-8 pointer-events-none z-[11000] mix-blend-difference"
                 animate={{
                     x: mousePosition.x - 16,
                     y: mousePosition.y - 16,
@@ -57,7 +57,7 @@ const CustomCursor = () => {
 
             {/* Trailing Dot */}
             <motion.div
-                className="fixed top-0 left-0 w-2 h-2 bg-[var(--primary)] rounded-full pointer-events-none z-[9998]"
+                className="fixed top-0 left-0 w-2 h-2 bg-[var(--primary)] rounded-full pointer-events-none z-[10999]"
                 animate={{
                     x: mousePosition.x - 4,
                     y: mousePosition.y - 4,
