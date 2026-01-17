@@ -107,18 +107,43 @@ const Home = () => {
           transition={{ duration: 0.8 }}
         >
           {/* Holographic Container */}
-          <div className="relative w-72 h-72 md:w-96 md:h-96">
-            {/* Simple Glow Ring instead of complex spin */}
-            <div className="absolute inset-0 rounded-full border-2 border-[var(--primary)] opacity-30 shadow-[0_0_50px_var(--primary)]"></div>
+          {/* Holographic Container */}
+          <div className="relative w-72 h-72 md:w-96 md:h-96 group">
 
-            {/* Profile Image */}
-            <div className="absolute inset-4 overflow-hidden rounded-full bg-black border-4 border-[var(--bg-dark)] shadow-2xl relative z-10">
-              {/* Use a fallback div if image fails, but try to load image */}
+            {/* Rotating Radar Rings */}
+            <div className="absolute inset-0 z-0">
+              <svg viewBox="0 0 100 100" className="w-full h-full animate-[spin_10s_linear_infinite] opacity-40">
+                <circle cx="50" cy="50" r="48" fill="none" stroke="var(--primary)" strokeWidth="0.5" strokeDasharray="10, 5, 2, 5" />
+                <circle cx="50" cy="50" r="40" fill="none" stroke="var(--primary)" strokeWidth="0.2" strokeDasharray="2, 4" />
+              </svg>
+            </div>
+            <div className="absolute inset-4 z-0">
+              <svg viewBox="0 0 100 100" className="w-full h-full animate-[spin_15s_linear_infinite_reverse] opacity-30">
+                <circle cx="50" cy="50" r="46" fill="none" stroke="var(--secondary)" strokeWidth="1" strokeDasharray="30, 30" />
+              </svg>
+            </div>
+
+            {/* Profile Image with Clip-Path Octagon */}
+            {/* Octagon shape provides more headroom than hexagon */}
+            <div className="absolute inset-6 z-10 overflow-hidden bg-black/50" style={{ clipPath: "polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)" }}>
               <img
                 src={profilePic || "https://via.placeholder.com/400"}
                 alt="Akhilesh Gupta"
-                className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity"
+                className="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 will-change-transform"
               />
+              {/* Glitch Overlay Effect */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--primary)]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none mix-blend-overlay"></div>
+            </div>
+
+            {/* Decorative Tech Elements */}
+            <div className="absolute -top-6 left-1/2 -translate-x-1/2 px-3 py-1 bg-black/60 border border-[var(--primary)] text-[10px] text-[var(--primary)] font-mono rounded backdrop-blur-md shadow-[0_0_10px_rgba(0,242,255,0.3)]">
+              AVATAR_ID: AG_001
+            </div>
+            <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1">
+              <div className="flex items-center gap-2 px-3 py-1 bg-black/60 rounded-full border border-[var(--online)]/30">
+                <span className="w-2 h-2 bg-[var(--online)] rounded-full animate-pulse shadow-[0_0_8px_#00ff00]"></span>
+                <span className="text-xs text-[var(--online)] font-gaming tracking-widest text-[#00ff00]">SYSTEM ONLINE</span>
+              </div>
             </div>
           </div>
         </motion.div>
