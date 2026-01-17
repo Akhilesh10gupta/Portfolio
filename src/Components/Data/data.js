@@ -1,7 +1,19 @@
 
 
+import avatarPlayImg from '../../assets/avatarplay.png';
+
 const projects = {
     allProject: [
+        {
+            image: avatarPlayImg,
+            title: 'AvatarPlay | Live',
+            description: 'Developed Avatar Play, a modern game distribution platform enabling users to explore, search, and download PC and Android games with an Epic-style interactive hero carousel. Implemented universal video support for gameplay trailers, including direct uploads, YouTube videos, and Shorts. Built a secure, mobile-optimized admin dashboard using Firebase Authentication. Optimized media delivery using Cloudinary.',
+            sourcecode: 'https://github.com/Akhilesh10gupta/Avatar-store',
+            livelink: 'https://avatarplay.in',
+            teckstack: ["Next.js 14", "Tailwind CSS", "Firebase Firestore", "Firebase Auth", "Cloudinary", "Framer Motion"],
+            status: 'live',
+            featured: true
+        },
         {
             image: 'https://res.cloudinary.com/dizmm8x5t/image/upload/v1752001285/Screenshot_2025-07-09_003106_iykxjq.png',
             title: 'ExtraBite | Live',

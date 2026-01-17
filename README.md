@@ -45,6 +45,10 @@ I'm **Akhilesh**, a Full Stack Web Developer with **1+ year of experience** in b
 
 ## 📂 Featured Projects
 
+### 🎮 [AvatarPlay](https://github.com/Akhilesh10gupta/Avatar-store)
+> **Digital Game Store**  
+> A feature-rich game distribution platform with an immersive dark UI. Browse games, view detailed info cards, and explore categories.
+
 ### 🟢 [Extra Bite](https://github.com/Akhilesh10gupta/extra-bite)
 > **Surplus Food Sharing Platform**  
 > Connects donors with receivers to reduce food waste. Features real-time tracking, OTP verification, and community impact metrics.

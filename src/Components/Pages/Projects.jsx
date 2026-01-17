@@ -1,113 +1,168 @@
-import { motion } from "framer-motion";
-import { FiGithub, FiExternalLink, FiCpu } from "react-icons/fi";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FiGithub, FiExternalLink, FiCpu, FiPlay, FiLayers, FiCode } from "react-icons/fi";
 import projects from "../Data/data.js";
 
 const Projects = () => {
+  const [activeProject, setActiveProject] = useState(0);
+
   return (
-    <section id="projects" className="relative py-24 bg-[var(--bg-dark)] overflow-hidden">
-      {/* Background Matrix/Grid Effect */}
-      <div className="absolute inset-0 opacity-10 pointer-events-none">
-        <div className="absolute inset-0 bg-[linear-gradient(0deg,transparent_24%,rgba(0,242,255,0.1)_25%,rgba(0,242,255,0.1)_26%,transparent_27%,transparent_74%,rgba(0,242,255,0.1)_75%,rgba(0,242,255,0.1)_76%,transparent_77%,transparent),linear-gradient(90deg,transparent_24%,rgba(0,242,255,0.1)_25%,rgba(0,242,255,0.1)_26%,transparent_27%,transparent_74%,rgba(0,242,255,0.1)_75%,rgba(0,242,255,0.1)_76%,transparent_77%,transparent)] bg-[size:50px_50px]"></div>
+    <section id="projects" className="relative py-20 bg-[var(--bg-dark)] overflow-hidden min-h-screen flex flex-col justify-center">
+      {/* Background Matrix Effect */}
+      <div className="absolute inset-0 opacity-5 pointer-events-none">
+        <div className="absolute inset-0 bg-[linear-gradient(0deg,transparent_24%,rgba(189,0,255,0.1)_25%,rgba(189,0,255,0.1)_26%,transparent_27%,transparent_74%,rgba(189,0,255,0.1)_75%,rgba(189,0,255,0.1)_76%,transparent_77%,transparent),linear-gradient(90deg,transparent_24%,rgba(189,0,255,0.1)_25%,rgba(189,0,255,0.1)_26%,transparent_27%,transparent_74%,rgba(189,0,255,0.1)_75%,rgba(189,0,255,0.1)_76%,transparent_77%,transparent)] bg-[size:50px_50px]"></div>
       </div>
 
-      <div className="container mx-auto px-6 lg:px-24 relative z-10">
-        <div className="flex flex-col items-center mb-16">
+      <div className="container mx-auto px-4 lg:px-12 relative z-10 h-full flex flex-col">
+        {/* Header */}
+        <div className="flex flex-col items-start mb-10">
           <div className="px-4 py-1 border border-[var(--primary)] rounded-full text-[var(--primary)] text-xs font-mono mb-4 animate-pulse">
-            MISSION LOGS DETECTED
+                        /// SYSTEM: ONLINE ///
           </div>
-          <h2 className="text-4xl md:text-6xl font-gaming font-bold text-white text-center">
-            COMPLETED <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)]">QUESTS</span>
+          <h2 className="text-4xl md:text-5xl font-gaming font-bold text-white">
+            GAME <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)]">LIBRARY</span>
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {projects.allProject.map((project, index) => (
-            <motion.div
-              key={index}
-              className="relative group perspective-1000"
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              viewport={{ once: true }}
-            >
-              <div className="h-full bg-[rgba(15,15,30,0.9)] border border-gray-800 rounded-xl overflow-hidden hover:border-[var(--primary)] transition-all duration-300 shadow-2xl group-hover:shadow-[0_0_30px_rgba(0,242,255,0.15)] flex flex-col">
+        {/* Main Launcher Interface */}
+        <div className="flex flex-col lg:flex-row gap-0 lg:gap-8 h-auto lg:h-[600px] border border-gray-800 bg-black/40 backdrop-blur-sm rounded-2xl overflow-hidden shadow-2xl relative">
+          {/* Sidebar - Game List */}
+          <div className="w-full lg:w-1/3 bg-black/60 border-b lg:border-b-0 lg:border-r border-gray-800 flex flex-row lg:flex-col p-4 overflow-x-auto lg:overflow-y-auto">
+            <h3 className="text-gray-500 text-xs font-mono mb-4 px-2 uppercase tracking-widest hidden lg:block">Installed Games ({projects.allProject.length})</h3>
 
-                {/* Image / Screen - Holo Effect */}
-                <div className="relative h-48 overflow-hidden border-b border-gray-800 group-hover:border-[var(--primary)]/50 transition-colors">
-                  <div className="absolute inset-0 bg-blue-500/10 mix-blend-overlay z-10"></div>
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
-                  />
-                  {/* Scanline */}
-                  <div className="absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,0,0,0.5)_50%)] bg-[size:4px_4px] pointer-events-none opacity-30"></div>
-
-                  {/* Status Badge */}
-                  <div className="absolute top-3 right-3 z-20">
-                    <span className={`px-2 py-1 text-[10px] font-bold font-gaming tracking-wider uppercase border ${project.status?.toLowerCase() === "live"
-                        ? "bg-green-500/20 text-green-400 border-green-500/50"
-                        : "bg-yellow-500/20 text-yellow-400 border-yellow-500/50"
-                      } backdrop-blur-md`}>
-                      {project.status?.toUpperCase() === "LIVE" ? "● ONLINE" : "○ IN DEV"}
+            <div className="flex flex-row lg:flex-col gap-3 lg:gap-2 overflow-x-auto lg:overflow-y-auto pb-2 lg:pb-0 scrollbar-none lg:scrollbar-thin scrollbar-thumb-[var(--primary)] scrollbar-track-transparent snap-x">
+              {projects.allProject.map((project, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveProject(index)}
+                  className={`min-w-[280px] lg:min-w-0 w-full text-left p-3 rounded-lg flex items-center gap-4 transition-all duration-300 border snap-center ${activeProject === index
+                    ? "bg-[var(--primary)]/10 border-[var(--primary)] shadow-[0_0_15px_rgba(0,242,255,0.2)]"
+                    : "bg-transparent border-transparent hover:bg-white/5 hover:border-gray-700"
+                    }`}
+                >
+                  <div className={`w-12 h-12 rounded overflow-hidden border flex-shrink-0 ${activeProject === index ? "border-[var(--primary)]" : "border-gray-700"}`}>
+                    <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h4 className={`font-gaming text-sm truncate ${activeProject === index ? "text-white" : "text-gray-400"}`}>
+                      {project.title.split("|")[0].trim()}
+                    </h4>
+                    <span className="text-[10px] text-gray-500 font-mono">
+                      {project.status?.toUpperCase() === "LIVE" ? "● READY" : "○ PAUSED"}
                     </span>
                   </div>
+                  {activeProject === index && (
+                    <motion.div layoutId="activeGlow" className="w-1.5 h-1.5 bg-[var(--primary)] rounded-full animate-pulse flex-shrink-0" />
+                  )}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Hero Area - Active Game Details */}
+          <div className="flex-1 relative flex flex-col">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeProject}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.4 }}
+                className="relative lg:absolute lg:inset-0 min-h-[500px] lg:min-h-full"
+              >
+                {/* Hero Background */}
+                <div className="absolute inset-0">
+                  <img src={projects.allProject[activeProject].image} alt="" className="w-full h-full object-cover opacity-20 filter blur-sm scale-110" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-dark)] via-[var(--bg-dark)]/80 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-[var(--bg-dark)] via-[var(--bg-dark)]/50 to-transparent" />
                 </div>
 
-                <div className="p-6 flex flex-col flex-grow relative">
-                  {/* Decorative Corner */}
-                  <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-[var(--primary)] opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                {/* Content */}
+                <div className="relative z-10 p-6 lg:p-12 flex flex-col justify-end lg:justify-center items-start">
+                  {/* Logo/Title */}
+                  <motion.h1
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.1 }}
+                    className="text-3xl sm:text-5xl lg:text-7xl font-gaming font-black text-white mb-4 leading-tight uppercase tracking-tighter drop-shadow-[0_0_10px_rgba(0,0,0,1)]"
+                  >
+                    {projects.allProject[activeProject].title.split("|")[0].trim()}
+                  </motion.h1>
 
-                  <h3 className="text-xl font-gaming font-bold text-white mb-2 group-hover:text-[var(--primary)] transition-colors">
-                    {project.title.split("|")[0].trim()}
-                  </h3>
-                  <span className="text-xs font-mono text-gray-500 mb-4 block">
-                    MISSION ID: 00{index + 1}-{project.title.substring(0, 3).toUpperCase()}
-                  </span>
+                  {/* Meta Data */}
+                  <motion.div
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.2 }}
+                    className="flex flex-wrap items-center gap-4 mb-8"
+                  >
+                    <span className="px-3 py-1 bg-white/10 backdrop-blur-md border border-white/20 rounded text-xs text-white font-mono">
+                      VERSION 1.0
+                    </span>
+                    <span className="px-3 py-1 bg-[var(--primary)]/20 border border-[var(--primary)] rounded text-xs text-[var(--primary)] font-bold tracking-wider">
+                      {projects.allProject[activeProject].status?.toUpperCase()}
+                    </span>
+                  </motion.div>
 
-                  <p className="text-gray-400 text-sm mb-6 flex-grow leading-relaxed font-sans line-clamp-3">
-                    {project.description}
-                  </p>
+                  {/* Description */}
+                  <motion.p
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.3 }}
+                    className="text-gray-300 text-sm md:text-base leading-relaxed max-w-2xl mb-8 font-sans border-l-2 border-[var(--primary)] pl-6"
+                  >
+                    {projects.allProject[activeProject].description}
+                  </motion.p>
 
-                  {/* Tech Inventory */}
-                  <div className="mb-6">
-                    <div className="flex items-center gap-2 mb-2 text-xs text-[var(--secondary)] font-bold uppercase tracking-wider">
-                      <FiCpu /> Inventory
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      {project.teckstack.map((tech, i) => (
-                        <span key={i} className="text-[10px] px-2 py-1 bg-gray-800 text-gray-300 rounded border border-gray-700 font-mono">
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
+                  {/* Tech Modules */}
+                  <motion.div
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.4 }}
+                    className="flex flex-wrap gap-2 mb-10 max-w-2xl"
+                  >
+                    {projects.allProject[activeProject].teckstack.map((tech, i) => (
+                      <span key={i} className="flex items-center gap-1.5 px-3 py-1.5 bg-black/50 border border-gray-700 text-gray-400 text-xs rounded hover:border-[var(--secondary)] hover:text-[var(--secondary)] transition-colors cursor-default">
+                        <FiCode size={10} /> {tech}
+                      </span>
+                    ))}
+                  </motion.div>
 
                   {/* Action Buttons */}
-                  <div className="flex gap-4 mt-auto">
-                    <a
-                      href={project.sourcecode}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 text-center py-2 text-sm font-bold font-gaming text-white bg-gray-800 hover:bg-[var(--primary)] hover:text-black border border-gray-600 hover:border-[var(--primary)] transition-all flex items-center justify-center gap-2 group/btn"
-                    >
-                      <FiGithub /> SOURCE
-                    </a>
-                    {project.livelink && !project.livelink.includes("github.com") && (
+                  <motion.div
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.5 }}
+                    className="flex flex-wrap gap-4"
+                  >
+                    {projects.allProject[activeProject].livelink && !projects.allProject[activeProject].livelink.includes("github.com") ? (
                       <a
-                        href={project.livelink}
+                        href={projects.allProject[activeProject].livelink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 text-center py-2 text-sm font-bold font-gaming text-[var(--bg-dark)] bg-[var(--primary)] hover:bg-white hover:text-[var(--bg-dark)] transition-all flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(0,242,255,0.3)] hover:shadow-[0_0_20px_rgba(255,255,255,0.5)]"
+                        className="px-6 py-3 lg:px-8 lg:py-4 bg-[var(--primary)] hover:bg-white text-black font-gaming font-bold text-lg roundedclip-path-polygon-[0_0,100%_0,100%_75%,90%_100%,0_100%] flex items-center gap-3 transition-all transform hover:scale-105 shadow-[0_0_30px_rgba(0,242,255,0.4)]"
                       >
-                        <FiExternalLink /> DEPLOY
+                        <FiPlay size={24} fill="currentColor" /> LAUNCH GAME
                       </a>
+                    ) : (
+                      <button disabled className="px-6 py-3 lg:px-8 lg:py-4 bg-gray-700 text-gray-400 font-gaming font-bold text-lg rounded cursor-not-allowed flex items-center gap-3 opacity-50">
+                        SERVER OFFLINE
+                      </button>
                     )}
-                  </div>
+
+                    <a
+                      href={projects.allProject[activeProject].sourcecode}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-6 py-3 lg:px-8 lg:py-4 bg-transparent border border-gray-600 hover:border-white text-white font-gaming font-bold text-lg rounded flex items-center gap-3 transition-all hover:bg-white/5"
+                    >
+                      <FiGithub size={20} /> VIEW SOURCE
+                    </a>
+                  </motion.div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            </AnimatePresence>
+          </div>
         </div>
       </div>
     </section>
