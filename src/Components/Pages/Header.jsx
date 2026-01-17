@@ -41,7 +41,7 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed w-full top-0 z-50 transition-all duration-300 ${scrolled ? "bg-[rgba(5,5,16,0.8)] backdrop-blur-md border-b border-[var(--primary)]/30" : "bg-transparent"
+      className={`fixed w-full top-0 z-[900] transition-all duration-300 ${scrolled ? "bg-[rgba(5,5,16,0.8)] backdrop-blur-md border-b border-[var(--primary)]/30" : "bg-transparent"
         }`}
     >
       <div className="container mx-auto px-6 h-20 flex items-center justify-between relative">
@@ -103,7 +103,7 @@ const Header = () => {
 
         {/* Mobile Menu Toggle */}
         <button
-          className="md:hidden text-white hover:text-[var(--primary)] transition-colors z-[60]"
+          className="md:hidden text-white hover:text-[var(--primary)] transition-colors z-[1000] relative"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <FiX size={28} /> : <FiMenu size={28} />}
@@ -113,7 +113,7 @@ const Header = () => {
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              className="fixed inset-0 bg-[rgba(5,5,16,0.98)] backdrop-blur-xl z-50 flex flex-col items-center justify-center"
+              className="fixed inset-0 bg-[rgba(5,5,16,0.98)] backdrop-blur-xl z-[950] flex flex-col items-center justify-center top-0 left-0 h-screen w-screen"
               initial="closed"
               animate="open"
               exit="closed"
