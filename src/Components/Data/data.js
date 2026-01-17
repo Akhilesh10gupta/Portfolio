@@ -1,9 +1,20 @@
 
 
 import avatarPlayImg from '../../assets/avatarplay.png';
+import waysortedImg from '../../assets/waysorted.png';
 
 const projects = {
     allProject: [
+        {
+            image: waysortedImg,
+            title: 'Waysorted | Live',
+            description: 'Waysorted is a unified, high-performance tool suite designed to accelerate workflows and replace multiple disconnected tools. It features Palettable for color palettes, Frames to PDF, and Wayspace for personalized environments.',
+            sourcecode: 'https://github.com/Waysorted-s-Organisation/waysorted-web',
+            livelink: 'https://www.waysorted.com/',
+            teckstack: ["Next.js", "TypeScript", "Tailwind CSS", "DaisyUI", "Framer Motion", "GSAP", "Node.js", "MongoDB"],
+            status: 'live',
+            featured: true
+        },
         {
             image: avatarPlayImg,
             title: 'AvatarPlay | Live',
