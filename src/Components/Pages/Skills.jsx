@@ -1,166 +1,122 @@
 import { motion } from "framer-motion";
-import { FaCode, FaServer, FaDatabase, FaTools, FaLaptopCode } from "react-icons/fa";
+import { FaCode, FaServer, FaDatabase, FaTools, FaLaptopCode, FaRocket } from "react-icons/fa";
 
 const Skills = () => {
   const skillCategories = [
     {
-      title: "Programming",
-      icon: <FaCode className="text-xl" />,
-      skills: ["C++", "JavaScript", "Java (Intermediate)"],
-      color: "from-blue-500 to-blue-600"
-    },
-    {
-      title: "Frontend",
+      title: "FRONTEND ARSENAL",
       icon: <FaLaptopCode className="text-xl" />,
-      skills: ["React.js", "Next.js", "TypeScript", "Tailwind CSS", "Material-UI", "HTML5", "CSS3"],
-      color: "from-purple-500 to-purple-600"
+      skills: [
+        { name: "React System", level: 90 },
+        { name: "Next.js Core", level: 85 },
+        { name: "Tailwind Armor", level: 95 },
+        { name: "TypeScript", level: 80 },
+      ],
+      color: "var(--primary)"
     },
     {
-      title: "Backend",
+      title: "BACKEND ENGINE",
       icon: <FaServer className="text-xl" />,
-      skills: ["Node.js",  "REST APIs", "Socket.io",  "OAuth"],
-      color: "from-green-500 to-green-600"
+      skills: [
+        { name: "Node.js", level: 85 },
+        { name: "REST Protocols", level: 90 },
+        { name: "WebSockets", level: 75 },
+      ],
+      color: "var(--secondary)"
     },
     {
-      title: "Databases",
+      title: "DATA VAULT",
       icon: <FaDatabase className="text-xl" />,
-      skills: [  "MySQL", "Firebase", ],
-      color: "from-yellow-500 to-yellow-600"
+      skills: [
+        { name: "MongoDB", level: 88 },
+        { name: "Firebase", level: 82 },
+        { name: "MySQL", level: 78 },
+      ],
+      color: "var(--accent)"
     },
-    {
-      title: "Tools/Platforms",
-      icon: <FaTools className="text-xl" />,
-      skills: ["Git/GitHub", "VS Code", "Vercel", "Netlify", "Figma", "WordPress", "Postman"],
-      color: "from-indigo-500 to-indigo-600"
-    },
-    // {
-    //   title: "Core Concepts",
-    //   icon: <FaCode className="text-xl" />,
-    //   skills: ["Data Structures & Algorithms", "OOPs", "DBMS", "Operating Systems"],
-    //   color: "from-indigo-500 to-indigo-600"
-    // }
   ];
 
   return (
-    <section id="skills" className="relative py-20 bg-gradient-to-br from-gray-900 to-gray-800 overflow-hidden">
-      {/* Floating Tech Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        {[...Array(12)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute text-gray-600 opacity-10"
-            style={{
-              fontSize: `${Math.random() * 50 + 20}px`,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, (Math.random() - 0.5) * 40],
-              x: [0, (Math.random() - 0.5) * 40],
-              rotate: [0, (Math.random() - 0.5) * 40],
-            }}
-            transition={{
-              duration: Math.random() * 10 + 10,
-              repeat: Infinity,
-              repeatType: "reverse",
-              ease: "easeInOut",
-            }}
-          >
-            {["</>", "{ }", "/* */", "=>", "() =>", "[]", "{}", "npm", "git", "API"][i % 10]}
-          </motion.div>
-        ))}
+    <section id="skills" className="relative py-24 bg-[var(--bg-dark)] overflow-hidden">
+      {/* Connection Lines Background */}
+      <div className="absolute inset-0 opacity-20 pointer-events-none">
+        <svg className="w-full h-full">
+          <pattern id="circuit" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+            <path d="M10 10 L90 10 M10 10 L10 90" fill="none" stroke="var(--primary)" strokeWidth="1" />
+            <circle cx="10" cy="10" r="2" fill="var(--primary)" />
+          </pattern>
+          <rect width="100%" height="100%" fill="url(#circuit)" />
+        </svg>
       </div>
 
       <div className="container mx-auto px-6 sm:px-12 lg:px-24 relative z-10">
-        <div className="flex flex-col md:flex-row gap-16">
-          {/* Left Side - Heading */}
+        <div className="text-center mb-16">
           <motion.div
-            className="md:w-1/3"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            className="inline-block"
           >
-            <motion.h2 
-              className="text-4xl md:text-5xl font-bold text-white mb-6 inline-block"
-              initial={{ scale: 1 }}
-              whileHover={{ 
-                scale: 1.02,
-                transition: { type: "spring", stiffness: 400 }
-              }}
-            >
-              <motion.span 
-                className="text-blue-600 dark:text-purple-400 inline-block"
-                whileHover={{
-                  scale: 1.05,
-                  textShadow: "0 0 10px rgba(96, 165, 250, 0.5)",
-                  transition: { delay: 0.1, type: "spring", stiffness: 500 }
-                }}
-              >
-                Technical
-              </motion.span>{" "}
-              <span className="text-white">Skills</span>
-            </motion.h2>
-            <div className="h-1 w-20 bg-blue-500 dark:bg-purple-500 mb-8"></div>
-            <p className="text-lg text-gray-300">
-              The tools and technologies I use to bring ideas to life and solve complex problems.
-            </p>
+            <h2 className="text-4xl md:text-6xl font-gaming font-bold text-white mb-2">
+              <span className="text-[var(--primary)]">ABILITY</span> TREE
+            </h2>
+            <div className="h-1 w-full bg-gradient-to-r from-transparent via-[var(--secondary)] to-transparent"></div>
           </motion.div>
+        </div>
 
-          {/* Right Side - Skills Grid */}
-          <div className="md:w-2/3">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {skillCategories.map((category, index) => (
-                <motion.div
-                  key={index}
-                  className="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700 hover:border-blue-400 transition-all duration-300 relative overflow-hidden group"
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1, duration: 0.5 }}
-                  viewport={{ once: true }}
-                  whileHover={{ y: -5 }}
-                >
-                  {/* Gradient Border Effect */}
-                  <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                    <div className={`absolute inset-0 bg-gradient-to-r ${category.color} rounded-xl blur-md opacity-20`}></div>
-                  </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {skillCategories.map((category, index) => (
+            <motion.div
+              key={index}
+              className="bg-[rgba(20,20,35,0.6)] backdrop-blur-md rounded-xl p-6 border border-gray-700/50 hover:border-[var(--primary)]/50 transition-colors duration-300 relative group"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
+              viewport={{ once: true }}
+            >
+              {/* Holographic Corner accents */}
+              <div className="absolute top-0 right-0 w-8 h-8 border-t border-r border-[var(--primary)] rounded-tr-xl opacity-50 group-hover:opacity-100 transition-opacity"></div>
+              <div className="absolute bottom-0 left-0 w-8 h-8 border-b border-l border-[var(--primary)] rounded-bl-xl opacity-50 group-hover:opacity-100 transition-opacity"></div>
 
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className={`p-2 rounded-lg bg-gradient-to-r ${category.color} text-white`}>
-                      {category.icon}
+              <div className="flex items-center gap-4 mb-6 pb-4 border-b border-gray-700/50">
+                <div className="p-3 bg-[var(--bg-dark)] rounded-lg text-white shadow-[0_0_10px_rgba(0,0,0,0.5)] border border-gray-700">
+                  {category.icon}
+                </div>
+                <h3 className="text-xl font-gaming text-white tracking-wider">{category.title}</h3>
+              </div>
+
+              <div className="space-y-6">
+                {category.skills.map((skill, skillIndex) => (
+                  <div key={skillIndex} className="relative">
+                    <div className="flex justify-between items-end mb-1">
+                      <span className="text-sm text-gray-300 font-medium">{skill.name}</span>
+                      <span className="text-xs text-[var(--primary)] font-mono">{skill.level}%</span>
                     </div>
-                    <h3 className="text-xl font-bold text-white">{category.title}</h3>
-                  </div>
-
-                  <div className="flex flex-wrap gap-3">
-                    {category.skills.map((skill, skillIndex) => (
+                    {/* Progress Bar Container */}
+                    <div className="h-2 w-full bg-black/50 rounded-full overflow-hidden border border-gray-700">
                       <motion.div
-                        key={skillIndex}
-                        className="px-3 py-1.5 bg-gray-700 rounded-full text-sm font-medium text-gray-200 hover:text-white cursor-default"
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        whileHover={{
-                          scale: 1.1,
-                          backgroundColor: "rgba(59, 130, 246, 0.2)",
-                          border: "1px solid rgba(96, 165, 250, 0.3)",
-                          transition: { type: "spring", stiffness: 400 }
-                        }}
-                        transition={{ 
-                          delay: skillIndex * 0.05 + index * 0.1,
-                          type: "spring",
-                          stiffness: 300
-                        }}
+                        className="h-full bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)] shadow-[0_0_8px_var(--primary)]"
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${skill.level}%` }}
+                        transition={{ duration: 1, delay: 0.5 + skillIndex * 0.1 }}
                         viewport={{ once: true }}
-                      >
-                        {skill}
-                      </motion.div>
-                    ))}
+                      />
+                    </div>
                   </div>
-                </motion.div>
-              ))}
-            </div>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Additional Badge/Info */}
+        <div className="mt-16 flex justify-center">
+          <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--bg-dark)] border border-gray-700 text-gray-400 font-mono text-sm">
+            <FaRocket className="text-[var(--accent)]" />
+            <span>SKILL POINTS AVAILABLE: 0 (MAXED OUT)</span>
           </div>
         </div>
+
       </div>
     </section>
   );

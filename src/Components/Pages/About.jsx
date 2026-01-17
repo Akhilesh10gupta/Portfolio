@@ -1,215 +1,125 @@
 import { motion } from "framer-motion";
-import { FaReact, FaNodeJs, FaCode } from "react-icons/fa";
-import { SiMongodb, SiNextdotjs, SiJavascript } from "react-icons/si";
+import { FaUserAstronaut, FaGamepad, FaCode, FaBolt } from "react-icons/fa";
 
 const About = () => {
   return (
     <section
       id="about"
-      className="relative py-20 bg-gradient-to-b from-blue-50 to-indigo-50 dark:from-gray-900 dark:to-gray-800 overflow-hidden"
+      className="relative py-24 bg-[var(--bg-dark)] overflow-hidden"
     >
-      {/* Background Animation Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        {/* Floating circles */}
-        <motion.div
-          className="absolute top-1/4 left-10 w-16 h-16 rounded-full bg-blue-200 dark:bg-purple-900 opacity-30"
-          animate={{
-            y: [0, -20, 0],
-            x: [0, 15, 0],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        
-        <motion.div
-          className="absolute bottom-1/3 right-20 w-24 h-24 rounded-full bg-indigo-200 dark:bg-purple-800 opacity-20"
-          animate={{
-            y: [0, 30, 0],
-            x: [0, -20, 0],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1
-          }}
-        />
+      {/* Decorative Background Elements */}
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-[var(--primary)]/5 to-transparent skew-x-12 pointer-events-none"></div>
+      <div className="absolute bottom-10 left-10 w-32 h-32 border border-[var(--secondary)]/20 rounded-full animate-pulse pointer-events-none"></div>
+      <div className="absolute top-20 right-20 w-8 h-8 rotate-45 border-2 border-[var(--primary)]/30 pointer-events-none"></div>
 
-        {/* Animated grid pattern */}
-        <div className="absolute inset-0 opacity-10 dark:opacity-5">
-          <svg
-            className="w-full h-full"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <defs>
-              <pattern
-                id="grid-pattern"
-                x="0"
-                y="0"
-                width="40"
-                height="40"
-                patternUnits="userSpaceOnUse"
-              >
-                <path
-                  d="M 40 0 L 0 0 0 40"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="0.5"
-                />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#grid-pattern)" />
-          </svg>
-        </div>
+      <div className="container mx-auto px-6 lg:px-24 w-full relative z-10">
+        <div className="flex flex-col lg:flex-row gap-16 items-center">
 
-        {/* Floating tech icons */}
-        <motion.div
-          className="absolute top-1/3 right-1/4 text-4xl text-blue-300 dark:text-purple-700 opacity-50"
-          animate={{
-            rotate: [0, 360],
-          }}
-          transition={{
-            duration: 30,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-        >
-          <FaReact />
-        </motion.div>
-
-        <motion.div
-          className="absolute bottom-1/4 left-1/4 text-3xl text-indigo-300 dark:text-purple-600 opacity-40"
-          animate={{
-            y: [0, -30, 0],
-            opacity: [0.4, 0.2, 0.4],
-          }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        >
-          <SiJavascript />
-        </motion.div>
-      </div>
-
-      <div className="container mx-auto px-6 sm:px-12 lg:px-24 relative z-10">
-        <div className="flex flex-col md:flex-row gap-16 items-center">
-          {/* Left Side - Heading */}
+          {/* Left Side - Holographic Character Card */}
           <motion.div
-            className="md:w-1/3"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
+            className="lg:w-1/3 w-full"
+            initial={{ opacity: 0, x: -50, rotateY: 15 }}
+            whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
+            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <motion.h2 
-              className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-6"
-              whileHover={{ scale: 1.02 }}
-            >
-              About{" "}
-              <span className="text-blue-600 dark:text-purple-400">Me</span>
-              <div className="h-1 w-28 bg-blue-500 dark:bg-purple-500 mt-4"></div>
-            </motion.h2>
-            
-            <div className="flex flex-wrap gap-4 mt-8">
-              {[
-                { icon: <SiJavascript className="text-yellow-500 text-xl" />, text: "JavaScript" },
-                { icon: <FaReact className="text-blue-500 text-xl" />, text: "React" },
-                { icon: <FaNodeJs className="text-green-500 text-xl" />, text: "Node.js" },
-                { icon: <SiMongodb className="text-green-600 text-xl" />, text: "MongoDB" },
-                { icon: <SiNextdotjs className="text-orange-500 text-xl" />, text: "Next.js" },
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  whileHover={{ y: -5, scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-700 rounded-lg shadow-md hover:shadow-lg cursor-default"
-                >
-                  {item.icon}
-                  <span className="font-medium">{item.text}</span>
-                </motion.div>
-              ))}
+            <div className="relative group perspective-1000">
+              <div className="absolute -inset-1 bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)] rounded-2xl blur opacity-30 group-hover:opacity-75 transition duration-500"></div>
+              <div className="relative bg-[rgba(20,20,35,0.8)] backdrop-blur-xl border border-gray-700/50 p-8 rounded-2xl shadow-2xl transform transition-transform duration-500 hover:scale-[1.02]">
+                {/* Header */}
+                <div className="flex items-center justify-between mb-6 border-b border-gray-700 pb-4">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 bg-[var(--primary)]/10 rounded-lg text-[var(--primary)]">
+                      <FaUserAstronaut size={24} />
+                    </div>
+                    <div>
+                      <h3 className="text-white font-gaming text-xl tracking-wider">PLAYER_01</h3>
+                      <p className="text-xs text-[var(--primary)] font-mono">STATUS: ONLINE</p>
+                    </div>
+                  </div>
+                  <div className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_10px_#22c55e] animate-pulse"></div>
+                </div>
+
+                {/* Stats Grid */}
+                <div className="space-y-4 mb-6">
+                  <div className="flex justify-between items-center text-sm">
+                    <span className="text-gray-400 font-mono">CLASS</span>
+                    <span className="text-white font-gaming text-right">TECH_WIZARD</span>
+                  </div>
+                  <div className="flex justify-between items-center text-sm">
+                    <span className="text-gray-400 font-mono">Level</span>
+                    <span className="text-[var(--secondary)] font-gaming text-right">24</span>
+                  </div>
+                  <div className="flex justify-between items-center text-sm">
+                    <span className="text-gray-400 font-mono">XP</span>
+                    <div className="w-32 h-2 bg-gray-800 rounded-full overflow-hidden">
+                      <div className="h-full bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)] w-[85%]"></div>
+                    </div>
+                  </div>
+                  <div className="flex justify-between items-center text-sm">
+                    <span className="text-gray-400 font-mono">GUILD</span>
+                    <span className="text-white font-gaming text-right">FREELANCER</span>
+                  </div>
+                </div>
+
+                {/* Footer */}
+                <div className="pt-4 border-t border-gray-700 flex justify-between text-xs font-mono text-gray-500">
+                  <span>ID: 8392-AX</span>
+                  <span>SERVER: ASIA-1</span>
+                </div>
+              </div>
             </div>
           </motion.div>
 
-          {/* Right Side - Content */}
+          {/* Right Side - Lore/Description */}
           <motion.div
-            className="md:w-2/3 space-y-6 text-gray-700 dark:text-gray-300"
+            className="lg:w-2/3 w-full"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <motion.p 
-              className="text-lg leading-relaxed"
-              whileHover={{ scale: 1.01 }}
-            >
-              <span className="text-2xl font-bold text-blue-600 dark:text-purple-400">
-                Hey there! 👋
-              </span>{" "}
-                I'm Akhilesh Gupta — a passionate full-stack developer dedicated to creating intuitive digital experiences with clean UI and efficient logic.
-            </motion.p>
+            <div className="flex items-center gap-4 mb-6">
+              <span className="text-[var(--accent)] text-4xl font-gaming opacity-80">01</span>
+              <h2 className="text-4xl md:text-5xl font-bold font-gaming text-white">
+                CHARACTER <span className="text-[var(--primary)]">LORE</span>
+              </h2>
+            </div>
 
-            <motion.p 
-              className="text-lg leading-relaxed"
-              whileHover={{ scale: 1.01 }}
-            >
-              With{" "}
-              <span className="font-semibold text-blue-600 dark:text-purple-400">
-                1+ year
-              </span>{" "}
-              of hands-on experience building full-stack applications, I
-              specialize in turning complex challenges into scalable,
-              user-friendly solutions using modern JavaScript technologies.
-            </motion.p>
-
-            <motion.div 
-              className="relative bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border-l-4 border-blue-500 dark:border-purple-500"
-              whileHover={{ y: -3 }}
-            >
-              <motion.div
-                animate={{ rotate: [0, 10, -10, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="absolute -top-4 -left-4 text-3xl p-2 bg-blue-100 dark:bg-purple-900 text-blue-600 dark:text-purple-400 rounded-full"
-              >
-                <FaCode />
-              </motion.div>
-              <p className="text-lg leading-relaxed">
-                When I’m not building apps, I’m exploring{" "}
-                <span className="font-semibold">new technologies</span>, learning{" "}
-                <span className="font-semibold">better development practices</span>, and continuously{" "}
-                <span className="font-semibold">improving my technical knowledge</span>.
+            <div className="p-6 border-l-4 border-[var(--primary)] bg-[var(--primary)]/5 backdrop-blur-sm rounded-r-xl mb-8 transform hover:translate-x-2 transition-transform duration-300">
+              <p className="text-lg text-gray-300 leading-relaxed font-sans">
+                <span className="text-[var(--primary)] font-bold">"</span>
+                Hey there! I'm Akhilesh, a Level 24 Full-Stack Developer with a passion for crafting immersive digital worlds.
+                My mission is to transform complex problems into sleek, efficient code.
+                Specializing in the MERN stack, I build scalable applications that perform as good as they look.
+                <span className="text-[var(--primary)] font-bold">"</span>
               </p>
+            </div>
 
-            </motion.div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {[
+                { icon: <FaCode />, title: "Code Sorcery", desc: "Writing clean, efficient, and scalable algorithms." },
+                { icon: <FaGamepad />, title: "UX Strategy", desc: "Designing intuitive interfaces for optimal player experience." },
+                { icon: <FaBolt />, title: "Performance", desc: "Optimizing load times for frame-perfect execution." },
+              ].map((item, idx) => (
+                <motion.div
+                  key={idx}
+                  className="flex items-start gap-4 p-4 rounded-xl hover:bg-white/5 transition-colors border border-transparent hover:border-gray-700"
+                  whileHover={{ y: -5 }}
+                >
+                  <div className="p-3 bg-[var(--bg-dark)] border border-gray-700 rounded-lg text-[var(--secondary)] shadow-lg">
+                    {item.icon}
+                  </div>
+                  <div>
+                    <h4 className="text-white font-gaming text-lg mb-1">{item.title}</h4>
+                    <p className="text-gray-400 text-sm">{item.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
 
-            <motion.p 
-              className="text-lg leading-relaxed"
-              whileHover={{ scale: 1.01 }}
-            >
-              My toolkit includes{" "}
-              <span className="font-semibold">
-                JavaScript, React, Node.js, Next.js, and MongoDB
-              </span>{" "}
-              — technologies I use daily to bring ideas to life.
-            </motion.p>
-
-            <motion.p 
-              className="text-lg leading-relaxed"
-              whileHover={{ scale: 1.01 }}
-            >
-              I'm always excited to collaborate on innovative projects, learn
-              new technologies, or simply geek out about the latest in web
-              development. Let's build something amazing together!
-            </motion.p>
           </motion.div>
+
         </div>
       </div>
     </section>

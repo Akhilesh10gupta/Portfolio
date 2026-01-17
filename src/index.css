@@ -1,6 +1,102 @@
 @import "tailwindcss";
 
+:root {
+  --bg-dark: #050510;
+  /* Deep Void Black */
+  --bg-panel: rgba(20, 20, 35, 0.6);
+  --primary: #00f2ff;
+  /* Cyberpunk Cyan */
+  --secondary: #bd00ff;
+  /* Neon Purple */
+  --accent: #ff0055;
+  /* Glitch Red */
+
+  --text-main: #e0e0e0;
+  --text-dim: #94a3b8;
+
+  --neon-glow-primary: 0 0 10px rgba(0, 242, 255, 0.5), 0 0 20px rgba(0, 242, 255, 0.3);
+  --neon-glow-secondary: 0 0 10px rgba(189, 0, 255, 0.5), 0 0 20px rgba(189, 0, 255, 0.3);
+
+  --font-gaming: 'Orbitron', 'Rajdhani', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+@layer base {
+  body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, var(--primary), var(--secondary));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, var(--secondary), var(--primary));
+}
+
+/* Glassmorphism Utilities */
+.glass-panel {
+  background: var(--bg-panel);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Neon Effects */
+.neon-border {
+  border: 1px solid var(--primary);
+  box-shadow: var(--neon-glow-primary);
+}
+
+.text-glow {
+  text-shadow: 0 0 10px rgba(0, 242, 255, 0.5);
+}
+
+/* Utility Animations */
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+
+  20% {
+    transform: translate(-2px, 2px);
+  }
+
+  40% {
+    transform: translate(-2px, -2px);
+  }
+
+  60% {
+    transform: translate(2px, 2px);
+  }
+
+  80% {
+    transform: translate(2px, -2px);
+  }
+
+  100% {
+    transform: translate(0);
+  }
+}
+
+.animate-glitch {
+  animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+}
+
 html {
   scroll-behavior: smooth;
 }
-

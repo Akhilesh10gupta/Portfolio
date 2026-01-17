@@ -1,207 +1,128 @@
-import { useEffect, useRef, useState } from "react";
-import profilePic from "../../assets/profile pic.jpg";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { FaReact, FaNodeJs, FaJs } from "react-icons/fa";
+import { FaReact, FaNodeJs, FaJs, FaGamepad, FaArrowRight } from "react-icons/fa";
 import { SiMongodb, SiNextdotjs, SiTailwindcss } from "react-icons/si";
+// Import profile pic with a fallback in case it fails in the future, although imports are static
+import profilePic from "../../assets/profile pic.jpg";
 
 const Home = () => {
-  const imageRef = useRef(null);
-  const [currentTech, setCurrentTech] = useState(null);
-
-  const techStack = [
-    { icon: <FaReact className="text-blue-500" size={28} />, name: "React" },
-    {
-      icon: <FaNodeJs className="text-green-500" size={28} />,
-      name: "Node.js",
-    },
-    {
-      icon: <FaJs className="text-yellow-500" size={28} />,
-      name: "JavaScript",
-    },
-    {
-      icon: <SiMongodb className="text-green-600" size={28} />,
-      name: "MongoDB",
-    },
-    {
-      icon: (
-        <SiNextdotjs className="text-gray-800 dark:text-gray-200" size={28} />
-      ),
-      name: "Next.js",
-    },
-    {
-      icon: <SiTailwindcss className="text-cyan-400" size={28} />,
-      name: "Tailwind",
-    },
-  ];
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-
-    const animateImage = () => {
-      if (imageRef.current) {
-        imageRef.current.style.transform = `translateY(${
-          Math.sin(Date.now() / 800) * 10
-        }px)`;
-        requestAnimationFrame(animateImage);
-      }
+    const handleMouseMove = (e) => {
+      setMousePosition({
+        x: (e.clientX - window.innerWidth / 2) / 25,
+        y: (e.clientY - window.innerHeight / 2) / 25,
+      });
     };
-    const animationId = requestAnimationFrame(animateImage);
-
-    // Tech stack animation
-    let techIndex = 0;
-    const techInterval = setInterval(() => {
-      setCurrentTech(techStack[techIndex]);
-      techIndex = (techIndex + 1) % techStack.length;
-    }, 2000);
-
-    return () => {
-      cancelAnimationFrame(animationId);
-      clearInterval(techInterval);
-    };
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-50 to-indigo-100 dark:from-gray-800 dark:to-gray-900 px-6 sm:px-12 lg:px-24 overflow-hidden relative"
+      className="min-h-screen relative flex items-center justify-center overflow-hidden bg-[var(--bg-dark)] px-4 py-20"
     >
-      {/* Background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -left-20 -top-20 w-96 h-96 opacity-10 dark:opacity-5">
-          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-            <path
-              fill="#3B82F6"
-              d="M50,-50C62.7,-36.1,69.4,-18,68.9,-0.6C68.4,16.8,60.8,33.6,48.1,45.9C35.4,58.2,17.7,66,-1.2,67.2C-20.1,68.4,-40.2,63,-52.9,50.7C-65.6,38.4,-70.9,19.2,-70.3,0.6C-69.7,-18,-63.2,-36,-50.5,-49.9C-37.8,-63.8,-18.9,-73.6,0.5,-74.1C19.9,-74.6,39.8,-65.8,50,-50Z"
-              transform="translate(100 100) rotate(15)"
-            />
-          </svg>
-        </div>
-        <div className="absolute -right-20 bottom-10 w-80 h-80 opacity-10 dark:opacity-5 rotate-45">
-          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-            <path
-              fill="#8B5CF6"
-              d="M45.1,-45.1C59.1,-31.1,71.8,-15.5,72.4,0.7C73,16.9,61.5,33.8,47.5,48.2C33.5,62.6,16.7,74.6,-1.1,75.7C-19,76.8,-38,67,-53.1,52.6C-68.1,38.2,-79.2,19.1,-79.1,0.1C-79,-18.9,-67.7,-37.8,-52.6,-51.8C-37.6,-65.8,-18.8,-74.9,-0.3,-74.6C18.2,-74.3,36.4,-64.6,45.1,-45.1Z"
-              transform="translate(100 100)"
-            />
-          </svg>
-        </div>
+      {/* Dynamic Cyberpunk Background */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Grid Floor */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(0,242,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,242,255,0.05)_1px,transparent_1px)] bg-[size:50px_50px] [transform:perspective(1000px)_rotateX(60deg)_translateY(200px)_scale(2)] opacity-30"></div>
+        {/* Glow Spheres */}
+        <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-[var(--primary)] rounded-full blur-[150px] opacity-10"></div>
+        <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-[var(--secondary)] rounded-full blur-[150px] opacity-10"></div>
       </div>
 
-      <div className="container mx-auto flex flex-col md:flex-row items-center justify-center gap-12 md:gap-24 z-10">
+      <div className="container mx-auto z-10 flex flex-col md:flex-row items-center justify-center gap-12 md:gap-20">
+
+        {/* Text/Content Side */}
         <motion.div
-          className="md:w-1/2 text-center md:text-left mx-auto"
+          className="md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-white mb-8">
-            Akhilesh Gupta
-          </h1>
-
-          <div className="flex items-center justify-center md:justify-start gap-4 mb-6">
-            <h2 className="text-2xl md:text-3xl font-semibold text-blue-600 dark:text-purple-400">
-              Full Stack Web Developer
-            </h2>
-
-            <div className="relative h-8 w-8">
-              {currentTech && (
-                <motion.div
-                  key={currentTech.name}
-                  initial={{ opacity: 0, scale: 0.5, x: 20 }}
-                  animate={{
-                    opacity: 1,
-                    scale: 1.2,
-                    x: 0,
-                    boxShadow: "0 0 15px rgba(59, 130, 246, 0.7)",
-                    border: "2px solid rgba(59, 130, 246, 0.5)",
-                  }}
-                  exit={{
-                    opacity: 0,
-                    scale: 0.5,
-                    x: -20,
-                    boxShadow: "0 0 0px rgba(0, 0, 0, 0)",
-                    border: "2px solid rgba(0, 0, 0, 0)",
-                  }}
-                  transition={{ duration: 1 }}
-                  className="absolute p-2 rounded-full bg-white/20 dark:bg-gray-800/20 backdrop-blur-sm"
-                  title={currentTech.name}
-                >
-                  {currentTech.icon}
-                </motion.div>
-              )}
-            </div>
+          {/* Status Badge */}
+          <div className="mb-6 px-4 py-1 rounded-full border border-[var(--primary)] bg-[var(--primary)]/10 backdrop-blur-sm text-[var(--primary)] font-mono text-sm tracking-widest uppercase shadow-[0_0_10px_rgba(0,242,255,0.2)]">
+            <span className="animate-pulse mr-2">●</span> Available for Quest
           </div>
 
-          <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-lg mx-auto md:mx-0">
-            Transforming ideas into elegant web solutions with clean code and
-            intuitive design. I specialize in building fast, responsive
-            applications that deliver seamless user experiences.
+          <h1 className="text-5xl md:text-7xl font-bold font-gaming text-white leading-tight mb-4 drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
+            AKHILESH <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)] drop-shadow-[0_0_10px_rgba(0,242,255,0.5)]">
+              GUPTA
+            </span>
+          </h1>
+
+          <h2 className="text-2xl md:text-3xl text-gray-400 font-gaming mb-8 flex items-center justify-center md:justify-start gap-3">
+            <span className="w-8 h-[2px] bg-[var(--accent)]"></span>
+            LVL. 99 FULLSTACK DEV
+          </h2>
+
+          <p className="text-lg text-gray-400 max-w-lg mb-10 leading-relaxed font-sans">
+            Crafting immersive digital experiences with clean code and futuristic design.
+            Ready to deploy high-performance applications into the digital realm.
           </p>
 
-          <div className="flex gap-4 justify-center md:justify-start">
+          <div className="flex flex-col sm:flex-row gap-6">
+            <motion.a
+              href="#projects"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="group relative px-8 py-3 bg-[var(--primary)]/10 text-[var(--primary)] border border-[var(--primary)] rounded-none font-gaming tracking-wider overflow-hidden hover:bg-[var(--primary)] hover:text-black transition-all duration-300 shadow-[0_0_20px_rgba(0,242,255,0.3)] flex items-center gap-2 justify-center"
+            >
+              Initialize Protocol <FaArrowRight />
+            </motion.a>
+
             <motion.a
               href="https://drive.google.com/file/d/1By-FY4WXuCt7QMwmagehyOuWstYSShRM/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-purple-600 dark:to-indigo-600 text-white rounded-lg font-medium shadow-lg transition-all hover:shadow-xl flex items-center gap-2"
+              className="px-8 py-3 bg-transparent border border-gray-600 text-gray-300 font-gaming hover:border-gray-400 hover:text-white transition-all flex items-center gap-2 justify-center"
             >
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                />
-              </svg>
-              View Resume
+              <FaGamepad className="mb-1" /> View Stats
             </motion.a>
+          </div>
+
+          {/* Active Tech Display (Simplified) */}
+          <div className="mt-12 p-4 w-full max-w-sm border border-gray-800 bg-black/40 rounded-xl backdrop-blur-sm relative overflow-hidden group hover:border-[var(--primary)]/50 transition-colors">
+            <p className="text-xs text-gray-500 font-mono mb-2">CURRENTLY EQUIPPED:</p>
+            <div className="flex gap-4 text-2xl text-gray-400">
+              <FaReact className="hover:text-[#61DAFB] transition-colors" />
+              <FaNodeJs className="hover:text-[#339933] transition-colors" />
+              <FaJs className="hover:text-[#F7DF1E] transition-colors" />
+              <SiNextdotjs className="hover:text-white transition-colors" />
+              <SiTailwindcss className="hover:text-[#06B6D4] transition-colors" />
+            </div>
           </div>
         </motion.div>
 
-        {/* Image */}
+        {/* Visual/Image Side */}
         <motion.div
-          className="md:w-1/2 flex justify-center"
-          initial={{ opacity: 0, scale: 0.5 }}
+          className="md:w-1/2 relative flex justify-center"
+          initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
         >
-          <div className="relative w-64 h-64 md:w-80 md:h-80">
-            {/* Floating ring animation */}
-            <div className="absolute inset-0 rounded-full border-4 border-blue-300 dark:border-purple-700 opacity-70">
-              <motion.div
-                className="absolute top-0 left-0 w-full h-full rounded-full border-2 border-blue-400 dark:border-purple-500"
-                animate={{
-                  scale: [1, 1.1, 1],
-                  opacity: [0.7, 0.4, 0.7],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
-            </div>
+          {/* Holographic Container */}
+          <div className="relative w-72 h-72 md:w-96 md:h-96">
+            {/* Simple Glow Ring instead of complex spin */}
+            <div className="absolute inset-0 rounded-full border-2 border-[var(--primary)] opacity-30 shadow-[0_0_50px_var(--primary)]"></div>
 
             {/* Profile Image */}
-            <div
-              ref={imageRef}
-              className="relative w-full h-full rounded-full overflow-hidden border-4 border-white dark:border-gray-700 shadow-xl"
-            >
+            <div className="absolute inset-4 overflow-hidden rounded-full bg-black border-4 border-[var(--bg-dark)] shadow-2xl relative z-10">
+              {/* Use a fallback div if image fails, but try to load image */}
               <img
-                src={profilePic}
-                alt="Anuj Kumar Gupta"
-                className="w-full h-full object-cover scale-100"
-                style={{ objectPosition: "center top" }}
+                src={profilePic || "https://via.placeholder.com/400"}
+                alt="Akhilesh Gupta"
+                className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity"
               />
             </div>
           </div>
         </motion.div>
+
       </div>
     </section>
   );

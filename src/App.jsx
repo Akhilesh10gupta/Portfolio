@@ -7,6 +7,8 @@ import Education from './Components/Pages/Education.jsx';
 import Skills from './Components/Pages/Skills.jsx';
 import Projects from './Components/Pages/Projects.jsx';
 import Footer from './Components/Pages/Footer.jsx';
+import CustomCursor from './Components/Game/CustomCursor.jsx';
+import StartScreen from './Components/Game/StartScreen.jsx';
 import { useEffect, useState } from "react";
 import { FaArrowUp } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
@@ -47,19 +49,31 @@ function ScrollToTopButton() {
 }
 
 function App() {
+  const [gameStarted, setGameStarted] = useState(false);
+
   return (
-    <div className="min-h-screen w-full overflow-x-hidden">
-      <Header />
-      <main className="w-full">
-        <Home />
-        <About />
-        <Experience />
-        <Education />
-        <Skills />
-        <Projects />
-      </main>
-      <Footer/>
-      <ScrollToTopButton />
+    <div className={`min-h-screen w-full overflow-x-hidden cursor-none ${!gameStarted ? 'h-screen overflow-hidden' : ''}`}>
+      <CustomCursor />
+
+      <AnimatePresence>
+        {!gameStarted && (
+          <StartScreen onStart={() => setGameStarted(true)} />
+        )}
+      </AnimatePresence>
+
+      <div className={gameStarted ? "opacity-100 transition-opacity duration-1000" : "opacity-0"}>
+        <Header />
+        <main className="w-full">
+          <Home />
+          <About />
+          <Experience />
+          <Education />
+          <Skills />
+          <Projects />
+        </main>
+        <Footer />
+        <ScrollToTopButton />
+      </div>
     </div>
   );
 }
