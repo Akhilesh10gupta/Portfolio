@@ -75,7 +75,7 @@ const Home = () => {
             </motion.a>
 
             <motion.a
-              href="https://drive.google.com/file/d/1By-FY4WXuCt7QMwmagehyOuWstYSShRM/view?usp=sharing"
+              href="https://drive.google.com/file/d/18x99ePi7GVEAhJ9YEtZ9WVXxsDVqq882/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
