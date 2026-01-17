@@ -6,8 +6,8 @@ import emailjs from '@emailjs/browser';
 const Contact = () => {
     const form = useRef();
     const [formState, setFormState] = useState({
-        name: "",
-        email: "",
+        from_name: "",
+        from_email: "",
         message: ""
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -28,7 +28,7 @@ const Contact = () => {
                 console.log(result.text);
                 setIsSubmitting(false);
                 setIsSent(true);
-                setFormState({ name: "", email: "", message: "" });
+                setFormState({ from_name: "", from_email: "", message: "" });
 
                 // Reset success message after 5 seconds
                 setTimeout(() => setIsSent(false), 5000);
@@ -123,8 +123,8 @@ const Contact = () => {
                                         <FaUser className="absolute top-4 left-4 text-gray-500 group-focus-within:text-[var(--primary)] transition-colors" />
                                         <input
                                             type="text"
-                                            name="user_name" // Changed for EmailJS standard template
-                                            value={formState.user_name}
+                                            name="from_name" // Standard EmailJS name
+                                            value={formState.from_name}
                                             onChange={handleChange}
                                             placeholder="AGENT IDENTITY / NAME"
                                             required
@@ -135,8 +135,8 @@ const Contact = () => {
                                         <FaEnvelope className="absolute top-4 left-4 text-gray-500 group-focus-within:text-[var(--primary)] transition-colors" />
                                         <input
                                             type="email"
-                                            name="user_email" // Changed for EmailJS standard template
-                                            value={formState.user_email}
+                                            name="from_email" // Standard EmailJS email
+                                            value={formState.from_email}
                                             onChange={handleChange}
                                             placeholder="ROUTING ADDRESS / EMAIL"
                                             required
