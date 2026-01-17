@@ -29,7 +29,7 @@ const StartScreen = ({ onStart }) => {
             <div className="absolute inset-0 bg-[linear-gradient(rgba(0,242,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,242,255,0.05)_1px,transparent_1px)] bg-[size:50px_50px] opacity-20"></div>
 
             <div className="relative z-10 flex flex-col items-center max-w-2xl w-full px-8">
-                <h1 className="text-6xl md:text-8xl font-gaming font-bold text-white mb-8 tracking-wider glitch-text relative">
+                <h1 className="text-4xl sm:text-6xl md:text-8xl font-gaming font-bold text-white mb-8 tracking-wider glitch-text relative text-center">
                     <span className="relative z-10">SYSTEM_INIT</span>
                     <span className="absolute top-0 left-1 text-[var(--secondary)] opacity-50 -z-10 animate-pulse">SYSTEM_INIT</span>
                     <span className="absolute top-0 -left-1 text-[var(--primary)] opacity-50 -z-10 animate-pulse">SYSTEM_INIT</span>
@@ -55,7 +55,7 @@ const StartScreen = ({ onStart }) => {
                             animate={{ opacity: 1, scale: 1 }}
                             whileHover={{ scale: 1.1, textShadow: "0 0 8px rgb(255,255,255)" }}
                             whileTap={{ scale: 0.95 }}
-                            className="group relative px-12 py-4 bg-transparent border-2 border-white text-white font-gaming text-xl tracking-[0.2em] hover:bg-white hover:text-black transition-all duration-300"
+                            className="group relative px-8 py-3 sm:px-12 sm:py-4 bg-transparent border-2 border-white text-white font-gaming text-base sm:text-xl tracking-[0.2em] hover:bg-white hover:text-black transition-all duration-300"
                         >
                             <span className="flex items-center gap-4">
                                 <FaPlay className="text-xs group-hover:text-black" />
