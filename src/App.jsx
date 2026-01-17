@@ -38,11 +38,37 @@ function ScrollToTopButton() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 40 }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
           transition={{ duration: 0.3 }}
-          className="fixed bottom-6 right-6 z-50 p-3 rounded-full bg-blue-600 dark:bg-purple-600 text-white shadow-lg hover:bg-blue-700 dark:hover:bg-purple-700 focus:outline-none"
+          className="fixed bottom-8 right-8 z-[500] group"
           aria-label="Scroll to top"
         >
-          <FaArrowUp size={22} />
+          {/* Main Button Construction */}
+          <div className="relative flex items-center justify-center w-14 h-14 bg-black/80 backdrop-blur-md border border-[var(--primary)] text-[var(--primary)] shadow-[0_0_15px_rgba(0,242,255,0.3)] hover:shadow-[0_0_30px_var(--primary)] transition-all duration-300"
+            style={{ clipPath: "polygon(30% 0, 70% 0, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0 70%, 0 30%)" }}
+          >
+            {/* Internal Glow */}
+            <div className="absolute inset-0 bg-[var(--primary)] opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+
+            {/* Bouncing Arrow */}
+            <motion.div
+              animate={{ y: [0, -3, 0] }}
+              transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+              className="relative z-10"
+            >
+              <FaArrowUp size={20} />
+            </motion.div>
+          </div>
+
+          {/* Thruster Flame Effect (Below button) */}
+          <div className="absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-full w-full h-8 flex justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+            <div className="w-2 h-4 bg-[var(--primary)] blur-[4px] animate-pulse"></div>
+            <div className="absolute w-4 h-8 bg-[var(--primary)]/50 blur-[8px] animate-pulse"></div>
+          </div>
+
+          {/* Orbiting Ring */}
+          <div className="absolute inset-[-4px] border border-[var(--primary)]/30 rounded-full w-[calc(100%+8px)] h-[calc(100%+8px)] animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none border-t-transparent border-l-transparent"></div>
         </motion.button>
       )}
     </AnimatePresence>
