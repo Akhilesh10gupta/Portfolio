@@ -22,15 +22,29 @@ const Header = () => {
 
     const timer = setInterval(() => setTime(new Date().toLocaleTimeString()), 1000);
 
-    // Mock Battery Drain
-    const batteryTimer = setInterval(() => {
-      setBattery(prev => (prev > 20 ? prev - 1 : 100));
-    }, 60000);
+    // Real Battery API
+    let batteryManager = null;
+
+    const updateBattery = (batt) => {
+      setBattery(Math.floor(batt.level * 100));
+    };
+
+    if ('getBattery' in navigator) {
+      navigator.getBattery().then((batt) => {
+        batteryManager = batt;
+        updateBattery(batt);
+        batt.addEventListener('levelchange', () => updateBattery(batt));
+        batt.addEventListener('chargingchange', () => updateBattery(batt));
+      });
+    }
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
       clearInterval(timer);
-      clearInterval(batteryTimer);
+      if (batteryManager) {
+        batteryManager.removeEventListener('levelchange', () => updateBattery(batteryManager));
+        batteryManager.removeEventListener('chargingchange', () => updateBattery(batteryManager));
+      }
     };
   }, []);
 
