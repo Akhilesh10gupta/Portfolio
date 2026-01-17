@@ -6,6 +6,7 @@ import Experience from './Components/Pages/Experience.jsx';
 import Education from './Components/Pages/Education.jsx';
 import Skills from './Components/Pages/Skills.jsx';
 import Projects from './Components/Pages/Projects.jsx';
+import Contact from './Components/Pages/Contact.jsx'; // Imported Contact
 import Footer from './Components/Pages/Footer.jsx';
 import CustomCursor from './Components/Game/CustomCursor.jsx';
 import StartScreen from './Components/Game/StartScreen.jsx';
@@ -70,6 +71,7 @@ function App() {
           <Education />
           <Skills />
           <Projects />
+          <Contact />
         </main>
         <Footer />
         <ScrollToTopButton />
