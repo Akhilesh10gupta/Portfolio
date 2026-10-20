@@ -68,17 +68,17 @@ const Projects = () => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
-                className="relative lg:absolute lg:inset-0 min-h-[480px] lg:h-full overflow-y-auto scrollbar-thin scrollbar-thumb-[var(--primary)]/40 scrollbar-track-transparent"
+                className="relative lg:absolute lg:inset-0 min-h-[480px] lg:h-full overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-[var(--primary)]/30 scrollbar-track-transparent"
               >
                 {/* Hero Background */}
-                <div className="absolute inset-0 pointer-events-none">
-                  <img src={projects.allProject[activeProject].image} alt="" className="w-full h-full object-cover opacity-20 filter blur-sm scale-110" />
+                <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                  <img src={projects.allProject[activeProject].image} alt="" className="w-full h-full object-cover opacity-20 filter blur-sm scale-105" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-dark)] via-[var(--bg-dark)]/85 to-transparent" />
                   <div className="absolute inset-0 bg-gradient-to-r from-[var(--bg-dark)] via-[var(--bg-dark)]/60 to-transparent" />
                 </div>
 
                 {/* Content */}
-                <div className="relative z-10 p-5 sm:p-6 lg:p-8 flex flex-col justify-center items-start min-h-full">
+                <div className="relative z-10 p-5 sm:p-6 lg:p-7 flex flex-col justify-center items-start min-h-full max-w-full">
                   {/* Logo/Title */}
                   <motion.h1
                     initial={{ y: 12, opacity: 0 }}
