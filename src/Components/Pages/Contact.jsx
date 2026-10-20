@@ -80,7 +80,7 @@ const Contact = () => {
                             <h3 className="text-2xl font-gaming text-white mb-2">OPERATIONAL BASE</h3>
                             <p className="text-gray-400 font-mono text-sm">
                                 <FaMapMarkerAlt className="inline mr-2 text-[var(--primary)]" />
-                                Lucknow, India (Sector 7)
+                                Gorakhpur, India
                             </p>
                         </div>
 
