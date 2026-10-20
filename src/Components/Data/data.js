@@ -2,9 +2,20 @@
 
 import avatarPlayImg from '../../assets/avatarplay.png';
 import waysortedImg from '../../assets/waysorted.png';
+import animusImg from '../../assets/animus.png';
 
 const projects = {
     allProject: [
+        {
+            image: animusImg,
+            title: 'Project Animus | Live',
+            description: "Assassin's Creed: Project Animus is an interactive web tribute and 3D memory corridor simulator recreating Abstergo's modern Animus OS v4.8 interface in the browser. Features an HTML5 Canvas 3D memory corridor with particle vortex & perspective grid, real-time Eagle Vision mode (V key) with thermal Isu gold filters, Master Assassins historical timeline (Altaïr, Ezio, Edward, Bayek), Precursor Codex & Artifact Vault with 3D tilt physics, interactive Leap of Faith with cinematic dive audio, and a zero-latency hybrid Web Audio API engine.",
+            sourcecode: 'https://github.com/rajnigupta0560-art/Assassin-creed',
+            livelink: 'https://assassincreed-abstergo.vercel.app/',
+            teckstack: ["HTML5 Canvas 3D", "Vanilla JavaScript (ES6+)", "Web Audio API", "Custom CSS HUD", "Vite", "Vercel"],
+            status: 'live',
+            featured: true
+        },
         {
             image: waysortedImg,
             title: 'Waysorted | Live',

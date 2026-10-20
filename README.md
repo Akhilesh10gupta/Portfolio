@@ -45,6 +45,10 @@ I'm **Akhilesh**, a Full Stack Web Developer with **1+ year of experience** in b
 
 ## 📂 Featured Projects
 
+### 🦅 [Assassin's Creed: Project Animus](https://github.com/rajnigupta0560-art/Assassin-creed) | [Live Site](https://assassincreed-abstergo.vercel.app/)
+> **Interactive 3D Memory Corridor & Web Tribute**  
+> An immersive recreation of Abstergo's Animus OS v4.8 in the browser. Features an HTML5 Canvas 3D particle memory corridor, Eagle Vision mode (V key), Master Assassins historical timeline, Precursor artifact vault with 3D tilt, interactive Leap of Faith, and a zero-latency hybrid Web Audio API soundscape.
+
 ### 🎮 [AvatarPlay](https://github.com/Akhilesh10gupta/Avatar-store)
 > **Digital Game Store**  
 > A feature-rich game distribution platform with an immersive dark UI. Browse games, view detailed info cards, and explore categories.
