@@ -129,11 +129,12 @@ const Skills = () => {
               }}
               whileHover={{
                 boxShadow: `0 0 25px ${category.glowColor}`,
-                borderColor: category.color
+                borderColor: category.color,
+                y: -4,
               }}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
+              transition={{ delay: index * 0.1, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               viewport={{ once: true }}
             >
               {/* Holographic Corner accents */}
@@ -188,7 +189,7 @@ const Skills = () => {
                           }}
                           initial={{ width: 0 }}
                           whileInView={{ width: `${skill.level}%` }}
-                          transition={{ duration: 1, delay: 0.2 + skillIndex * 0.1 }}
+                          transition={{ duration: 1, delay: 0.15 + skillIndex * 0.08, ease: [0.16, 1, 0.3, 1] }}
                           viewport={{ once: true }}
                         />
                       </div>

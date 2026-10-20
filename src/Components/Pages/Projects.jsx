@@ -35,7 +35,7 @@ const Projects = () => {
                 <button
                   key={index}
                   onClick={() => setActiveProject(index)}
-                  className={`min-w-[260px] lg:min-w-0 w-full text-left p-2.5 sm:p-3 rounded-lg flex items-center gap-3 sm:gap-4 transition-all duration-300 border snap-center ${activeProject === index
+                  className={`min-w-[260px] lg:min-w-0 w-full text-left p-2.5 sm:p-3 rounded-lg flex items-center gap-3 sm:gap-4 transition-all duration-200 ease-out hover:-translate-y-0.5 active:translate-y-0 border snap-center ${activeProject === index
                     ? "bg-[var(--primary)]/10 border-[var(--primary)] shadow-[0_0_15px_rgba(0,242,255,0.2)]"
                     : "bg-transparent border-transparent hover:bg-white/5 hover:border-gray-700"
                     }`}
@@ -64,11 +64,11 @@ const Projects = () => {
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeProject}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
-                className="relative lg:absolute lg:inset-0 min-h-[480px] lg:h-full overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-[var(--primary)]/30 scrollbar-track-transparent"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                className="relative lg:absolute lg:inset-0 min-h-[480px] lg:h-full overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-[var(--primary)]/30 scrollbar-track-transparent will-change-transform"
               >
                 {/* Hero Background */}
                 <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -109,7 +109,7 @@ const Projects = () => {
                     initial={{ y: 12, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.2 }}
-                    className="text-gray-300 text-xs sm:text-sm leading-relaxed max-w-2xl mb-3.5 font-sans border-l-2 border-[var(--primary)] pl-3.5"
+                    className="text-gray-300 text-xs sm:text-sm leading-relaxed max-w-2xl mb-3.5 font-sans border-l-2 border-[var(--primary)] pl-3.5 line-clamp-3 sm:line-clamp-4"
                   >
                     {projects.allProject[activeProject].description}
                   </motion.p>

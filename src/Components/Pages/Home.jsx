@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FaReact, FaNodeJs, FaJs, FaGamepad, FaArrowRight } from "react-icons/fa";
 import { SiMongodb, SiNextdotjs, SiTailwindcss } from "react-icons/si";
@@ -6,18 +5,6 @@ import { SiMongodb, SiNextdotjs, SiTailwindcss } from "react-icons/si";
 import profilePic from "../../assets/profile pic.jpg";
 
 const Home = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      setMousePosition({
-        x: (e.clientX - window.innerWidth / 2) / 25,
-        y: (e.clientY - window.innerHeight / 2) / 25,
-      });
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
 
   return (
     <section

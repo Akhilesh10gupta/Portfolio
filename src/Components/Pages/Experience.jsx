@@ -97,7 +97,7 @@ const Experience = () => {
                   className="relative flex flex-col md:flex-row items-start md:items-center md:justify-between gap-3 md:gap-8 group"
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.12 }}
+                  transition={{ duration: 0.6, delay: index * 0.12, ease: [0.16, 1, 0.3, 1] }}
                   viewport={{ once: true }}
                 >
                   {/* Timeline Node */}
@@ -143,7 +143,7 @@ const Experience = () => {
                       </div>
                     ) : (
                       /* Quest Card (Left for Odd on desktop, Second on mobile) */
-                      <div className={`relative p-4 sm:p-6 bg-[rgba(20,20,35,0.7)] border border-gray-700/80 rounded-xl backdrop-blur-md transition-all duration-300 ${quest.cardGlow}`}>
+                      <div className={`relative p-4 sm:p-6 bg-[rgba(20,20,35,0.7)] border border-gray-700/80 rounded-xl backdrop-blur-md transform transition-all duration-300 ease-out hover:-translate-y-1 ${quest.cardGlow}`}>
                         <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent rounded-xl pointer-events-none"></div>
 
                         <div className="flex items-start justify-between mb-3 gap-2">
@@ -198,7 +198,7 @@ const Experience = () => {
                   >
                     {isEven ? (
                       /* Quest Card (Right for Even on desktop, Second on mobile) */
-                      <div className={`relative p-4 sm:p-6 bg-[rgba(20,20,35,0.7)] border border-gray-700/80 rounded-xl backdrop-blur-md transition-all duration-300 ${quest.cardGlow}`}>
+                      <div className={`relative p-4 sm:p-6 bg-[rgba(20,20,35,0.7)] border border-gray-700/80 rounded-xl backdrop-blur-md transform transition-all duration-300 ease-out hover:-translate-y-1 ${quest.cardGlow}`}>
                         <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent rounded-xl pointer-events-none"></div>
 
                         <div className="flex items-start justify-between mb-3 gap-2">
