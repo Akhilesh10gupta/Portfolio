@@ -54,7 +54,7 @@ const projects = {
             title: 'Musiz | LIVE Site available',
             description: 'Musiz is a sleek and modern frontend music discovery platform developed as a freelance project. Built with React and Tailwind CSS, it features artist grids, soundwave animations, 3D instrument placeholders, and smooth content transitions to deliver an engaging and responsive user experience.',
             sourcecode: 'https://github.com/Akhilesh10gupta/musiz',
-            livelink: 'https://www.sirmusizstudios.com/',
+            livelink: 'https://musiz-v2.vercel.app/',
             teckstack: ["JavaScript", "React", "Tailwind CSS", "Framer Motion", "Three.js"],
             status: 'LIVE',
             featured: true

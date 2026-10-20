@@ -57,7 +57,7 @@ I'm **Akhilesh**, a Full Stack Web Developer with **1+ year of experience** in b
 > **Surplus Food Sharing Platform**  
 > Connects donors with receivers to reduce food waste. Features real-time tracking, OTP verification, and community impact metrics.
 
-### 🎧 [Musiz](https://github.com/Akhilesh10gupta/Musiz)
+### 🎧 [Musiz](https://github.com/Akhilesh10gupta/Musiz) | [Live Site](https://musiz-v2.vercel.app/)
 > **Interactive Music Discovery**  
 > A React-based audio explorer with soundwave visualizations, artist grids, and seamless transitions.
 
