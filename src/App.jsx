@@ -41,11 +41,11 @@ function ScrollToTopButton() {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           transition={{ duration: 0.3 }}
-          className="fixed bottom-8 right-8 z-[500] group"
+          className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 z-[500] group"
           aria-label="Scroll to top"
         >
           {/* Main Button Construction */}
-          <div className="relative flex items-center justify-center w-14 h-14 bg-black/80 backdrop-blur-md border border-[var(--primary)] text-[var(--primary)] shadow-[0_0_15px_rgba(0,242,255,0.3)] hover:shadow-[0_0_30px_var(--primary)] transition-all duration-300"
+          <div className="relative flex items-center justify-center w-11 h-11 sm:w-14 sm:h-14 bg-black/80 backdrop-blur-md border border-[var(--primary)] text-[var(--primary)] shadow-[0_0_15px_rgba(0,242,255,0.3)] hover:shadow-[0_0_30px_var(--primary)] transition-all duration-300"
             style={{ clipPath: "polygon(30% 0, 70% 0, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0 70%, 0 30%)" }}
           >
             {/* Internal Glow */}
@@ -57,7 +57,7 @@ function ScrollToTopButton() {
               transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
               className="relative z-10"
             >
-              <FaArrowUp size={20} />
+              <FaArrowUp className="text-base sm:text-xl" />
             </motion.div>
           </div>
 
