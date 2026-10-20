@@ -49,9 +49,9 @@ I'm **Akhilesh**, a Full Stack Web Developer with **1+ year of experience** in b
 > **Interactive 3D Memory Corridor & Web Tribute**  
 > An immersive recreation of Abstergo's Animus OS v4.8 in the browser. Features an HTML5 Canvas 3D particle memory corridor, Eagle Vision mode (V key), Master Assassins historical timeline, Precursor artifact vault with 3D tilt, interactive Leap of Faith, and a zero-latency hybrid Web Audio API soundscape.
 
-### 🎮 [AvatarPlay](https://github.com/Akhilesh10gupta/Avatar-store)
-> **Digital Game Store**  
-> A feature-rich game distribution platform with an immersive dark UI. Browse games, view detailed info cards, and explore categories.
+### 🎮 [AvatarPlay](https://github.com/Akhilesh10gupta/Avatar-store) | [Live Site](https://avatarplay.in)
+> **Next.js 14 Gaming Distribution & Autonomous AI News Platform**  
+> Built with Next.js 14 App Router, Tailwind CSS, and Firebase. Features an Epic-style hero carousel with progress animations, universal video playback, full gamification (XP/leveling, 3D badges, live activity feed), an autonomous Gemini-powered AI gaming blog with Vercel Cron and GEO JSON-LD schemas, and secure admin with Cloudinary AI fill & TensorFlow.js content moderation.
 
 ### 🟢 [Extra Bite](https://github.com/Akhilesh10gupta/extra-bite)
 > **Surplus Food Sharing Platform**  

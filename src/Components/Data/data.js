@@ -29,10 +29,10 @@ const projects = {
         {
             image: avatarPlayImg,
             title: 'AvatarPlay | Live',
-            description: 'Developed Avatar Play, a modern game distribution platform enabling users to explore, search, and download PC and Android games with an Epic-style interactive hero carousel. Implemented universal video support for gameplay trailers, including direct uploads, YouTube videos, and Shorts. Built a secure, mobile-optimized admin dashboard using Firebase Authentication. Optimized media delivery using Cloudinary.',
+            description: 'Avatar Play is a premium, modern game distribution platform engineered with Next.js 14 App Router, Tailwind CSS, and Firebase. Features an Epic-style auto-rotating hero carousel with progress fills, universal video trailer playback (direct uploads, YouTube & Shorts), smart genre/platform filtering, and dual PC/Android downloads. Packed with gamification including an XP/leveling system, 3D unlockable achievement badges, real-time activity feeds, and a holographic Sci-Fi profile. Houses an autonomous AI gaming blog powered by Gemini API, Vercel Cron, Unsplash API, and GEO JSON-LD schemas, alongside a secure Firebase admin dashboard with Cloudinary AI generative fill and client-side TensorFlow.js/NSFWJS moderation.',
             sourcecode: 'https://github.com/Akhilesh10gupta/Avatar-store',
             livelink: 'https://avatarplay.in',
-            teckstack: ["Next.js 14", "Tailwind CSS", "Firebase Firestore", "Firebase Auth", "Cloudinary", "Framer Motion"],
+            teckstack: ["Next.js 14", "TypeScript", "Tailwind CSS", "Firebase Firestore/Auth", "Cloudinary AI", "Gemini API", "Vercel Cron", "TensorFlow.js", "Framer Motion"],
             status: 'live',
             featured: true
         },
